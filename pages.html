@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="./css/output.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+</head>
+<body class="bg-blue-300">
+    <!-- Header with Navbar -->
+    <header class="absolute top-0 left-0 w-full z-20 bg-transparent">
+        <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 lg:p-8">
+            <!-- Navigation Links on the Left -->
+            <nav class="flex space-x-8">
+                <a href="index.html" class=" hover:text-blue-600 text-gray-900 font-medium">Home</a>
+                <a href="shop.html" class=" hover:text-blue-600 text-gray-900 font-medium">Shop</a>
+                <a href="pages.html" class=" hover:text-blue-600 text-gray-900 font-medium">Pages</a>
+                <a href="contact.html" class=" hover:text-blue-600 text-gray-900 font-medium">Contact Us</a>
+            </nav>
+
+            <!-- Logo in the Center -->
+            <a href="#" class="text-white text-xl font-bold absolute left-1/2 transform -translate-x-1/2">Mixtas</a>
+
+            <div class="flex items-center space-x-6">
+              <!-- Profile Link -->
+              <a href="profile.html" class="hover:text-blue-600 text-gray-900 font-medium">Profile</a>
+            
+              <!-- Cart Link with Notification -->
+              <a href="cart.html" class="relative hover:text-blue-600 text-gray-900 font-medium">
+                Cart
+                <span id="cart-count" class="absolute -top-2 -right-4 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  0
+                </span>
+              </a>
+        
+        <button  id="logout-button" class="hover:opacity-80">
+          <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6">
+      </button>
+    </div>
+
+    </header>
+
+    <!-- Hero Section -->
+    <section id="slider" class="relative h-screen flex items-center justify-center bg-blue-700">
+        <!-- Background Image -->
+        <div class="absolute inset-0">
+            <img 
+                id="slider-image" 
+                src="img/pexels-cottonbro-7037424.jpg" 
+                alt="Background" 
+                class="w-full h-full object-cover">
+        </div>
+
+        <!-- Content Section -->
+        <div class="relative z-10 max-w-screen-xl mx-auto px-4 lg:px-8 text-white flex items-center">
+            <div class="w-1/2 space-y-6">
+                <h2 id="slider-subtitle" class="text-sm uppercase font-semibold tracking-widest">Urban Edge</h2>
+                <h1 id="slider-title" class="text-4xl lg:text-6xl font-bold leading-tight">Jackets for the Modern Man</h1>
+                <button id="slider-button" class="mt-4 px-6 py-3 bg-white text-black text-sm font-medium uppercase rounded-full hover:bg-gray-600">
+                    Discover Now
+                </button>
+            </div>
+        </div>
+
+        <!-- Navigation Arrows -->
+        <button 
+            id="prev-slide" 
+            class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-opacity-80 text-black text-2xl p-3 rounded-full hover:bg-opacity-100 transition duration-300 shadow">
+            &#8592;
+        </button>
+
+        <button 
+            id="next-slide" 
+            class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-opacity-80 text-black text-2xl p-3 rounded-full hover:bg-opacity-100 transition duration-300 shadow">
+            &#8594;
+        </button>
+    </section>
+    <script src="script.js"></script>
+</body>
+</html>
