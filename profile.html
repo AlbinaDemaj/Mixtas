@@ -1,122 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile - Mixtas</title>
-  <link rel="stylesheet" href="./css/output.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile | Mixtas</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-blue-300">
-  <header class="absolute top-0 left-0 w-full z-20 bg-transparent">
-    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 lg:p-8">
-      <nav class="flex space-x-8">
-        <a href="index.html" class="hover:text-blue-600 text-gray-900 font-medium">Home</a>
-        <a href="shop.html" class="hover:text-blue-600 text-gray-900 font-medium">Shop</a>
-        <a href="pages.html" class="hover:text-blue-600 text-gray-900 font-medium">Pages</a>
-        <a href="contact.html" class="hover:text-blue-600 text-gray-900 font-medium">Contact Us</a>
-      </nav>
+<body class="bg-blue-300 min-h-screen flex flex-col">
 
-      <!-- Logo -->
-      <a href="#" class="text-white text-xl font-bold absolute left-1/2 transform -translate-x-1/2">Mixtas</a>
+<!-- Header -->
+<header class="absolute top-0 left-0 w-full z-20 bg-transparent">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 lg:p-8 relative">
+    
+    <!-- Logo in the center -->
+    <a href="index.html" class="text-blue-950 text-xl font-bold absolute left-1/2 transform -translate-x-1/2 z-30">Mixtas</a>
 
-      <div class="flex items-center space-x-6">
-        <a href="profile.html" class="hover:text-blue-600 text-gray-900 font-medium">Profile</a>
-        <a href="cart.html" class="relative hover:text-blue-600 text-gray-900 font-medium">
-          Cart
-          <span id="cart-count" class="absolute -top-2 -right-4 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-        </a>
-        <button id="logout-button" class="hover:opacity-80">
-          <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6">
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Profile Section -->
-  <section class="max-w-screen-md mx-auto py-12 px-4 mt-36">
-    <div class="bg-white p-6 rounded-lg shadow-md">
-      <h1 class="text-2xl font-bold mb-4">Welcome, <span id="user-name"></span>!</h1>
-      <p class="text-gray-600">This is your profile page. Here, you can see your past orders and manage your account.</p>
+    <!-- Hamburger button for mobile -->
+    <div class="lg:hidden z-30">
+      <button id="menu-toggle" class="text-gray-900 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
 
-    <!-- Past Orders -->
-    <div class="mt-8">
-      <h2 class="text-xl font-bold mb-4">Your Orders</h2>
-      <div id="orders" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <!-- Orders will be dynamically inserted here -->
-      </div>
+    <!-- Navigation + Icons (desktop) -->
+    <nav class="hidden lg:flex items-center space-x-8">
+      <a href="index.html" class="hover:text-blue-600 text-gray-900 font-medium">Home</a>
+      <a href="shop.html" class="hover:text-blue-600 text-gray-900 font-medium">Shop</a>
+      <a href="pages.html" class="hover:text-blue-600 text-gray-900 font-medium">Pages</a>
+      <a href="contact.html" class="hover:text-blue-600 text-gray-900 font-medium">Contact</a>
+    </nav>
+
+    <!-- Right icons (desktop) -->
+    <div class="hidden lg:flex items-center space-x-6">
+      <a href="profile.html" class="hover:text-blue-600 text-gray-900 font-medium font-bold">Profile</a>
+      <a href="cart.html" class="relative hover:text-blue-600 text-gray-900 font-medium">
+        Cart
+        <span id="cart-count" class="absolute -top-2 -right-4 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      </a>
+      <button id="logout-button" class="hover:opacity-80">
+        <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6" />
+      </button>
     </div>
-  </section>
+  </div>
 
-  <footer class="bg-gray-900 text-white py-12">
-    <div class="max-w-screen-xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-      <div>
-        <h3 class="text-lg font-bold mb-4">About Mixtas</h3>
-        <p class="text-gray-400">
-          Mixtas is your destination for premium fashion and accessories.
-        </p>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold mb-4">Quick Links</h3>
-        <ul class="text-gray-400 space-y-2">
-          <li><a href="index.html" class="hover:text-white">Home</a></li>
-          <li><a href="shop.html" class="hover:text-white">Shop</a></li>
-          <li><a href="about.html" class="hover:text-white">About Us</a></li>
-          <li><a href="contact.html" class="hover:text-white">Contact Us</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="text-lg font-bold mb-4">Follow Us</h3>
-        <p class="text-gray-400">Connect with us on social media:</p>
-        <div class="flex space-x-4">
-          <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
-          <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
-          <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
-        </div>
-      </div>
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-md px-4 py-6 space-y-4 text-center text-gray-900">
+    <a href="index.html" class="block hover:text-blue-600 font-medium">Home</a>
+    <a href="shop.html" class="block hover:text-blue-600 font-medium">Shop</a>
+    <a href="pages.html" class="block hover:text-blue-600 font-medium">Pages</a>
+    <a href="contact.html" class="block hover:text-blue-600 font-medium">Contact</a>
+    <a href="profile.html" class="block hover:text-blue-600 font-medium font-bold">Profile</a>
+    <a href="cart.html" class="relative block hover:text-blue-600 font-medium">
+      Cart
+      <span class="absolute top-0 right-10 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+    </a>
+    <button id="logout-button-mobile" class="mx-auto hover:opacity-80">
+      <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6 mx-auto" />
+    </button>
+  </div>
+</header>
+
+<!-- Profile Section -->
+<section class="flex-grow pt-32 px-4 pb-12">
+  <div class="max-w-screen-md mx-auto bg-white p-6 rounded-lg shadow-md">
+    <h1 class="text-2xl font-bold mb-4">Welcome, <span id="user-name"></span>!</h1>
+    <p class="text-gray-600">This is your profile page. Here, you can see your past orders and manage your account.</p>
+  </div>
+
+  <!-- Orders -->
+  <div class="mt-8 max-w-screen-md mx-auto">
+    <h2 class="text-xl font-bold mb-4 text-gray-800">Your Orders</h2>
+    <div id="orders" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <!-- Orders will be inserted here -->
     </div>
-    <div class="mt-12 text-center text-gray-500">
-      <p>&copy; 2025 Albina Demaj. All rights reserved.</p>
-    </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        const ordersElement = document.getElementById('orders');
-        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-        const userNameElement = document.getElementById('user-name');
-        
-        if (loggedInUser) {
-            userNameElement.textContent = loggedInUser.name || "User";
-        } else {
-            userNameElement.textContent = "Guest";
-        }
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-8 mt-auto">
+  <div class="max-w-screen-xl mx-auto text-center">
+    <p>&copy; 2025 Albina Demaj. All rights reserved.</p>
+  </div>
+</footer>
 
-        const orders = JSON.parse(localStorage.getItem('orders')) || [];
-        console.log("Orders from localStorage: ", orders);
+<!-- Script -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
 
-        if (orders.length > 0) {
-            orders.forEach(order => {
-                const orderCard = document.createElement('div');
-                orderCard.classList.add('bg-white', 'p-4', 'rounded-lg', 'shadow', 'hover:shadow-lg', 'transition');
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
 
-                orderCard.innerHTML = `
-                    <h3 class="text-lg font-bold">Order ID: ${order.id}</h3>
-                    <p class="text-gray-600">Date: ${order.date}</p>
-                    <p class="text-gray-600">Total Items: ${order.items.length}</p>
-                    <p class="text-gray-600">Total Price: $${order.total}</p>
-                    <ul class="mt-4 text-sm text-gray-600">
-                        ${order.items.map(item => `<li>- ${item.title} ($${item.price.toFixed(2)})</li>`).join('')}
-                    </ul>
-                `;
-                ordersElement.appendChild(orderCard);
-            });
-        } else {
-            ordersElement.innerHTML = `<p class="text-gray-600">You have no past orders.</p>`;
-        }
-    });
-  </script>
-     <script src="script.js"></script>
+  // Profile logic
+  document.addEventListener('DOMContentLoaded', () => {
+    const userNameElement = document.getElementById('user-name');
+    const ordersElement = document.getElementById('orders');
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+      userNameElement.textContent = loggedInUser.name || "User";
+    } else {
+      userNameElement.textContent = "Guest";
+    }
+
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+    if (orders.length > 0) {
+      orders.forEach(order => {
+        const orderCard = document.createElement('div');
+        orderCard.className = 'bg-white p-4 rounded-lg shadow hover:shadow-lg transition';
+        orderCard.innerHTML = `
+          <h3 class="text-lg font-bold">Order ID: ${order.id}</h3>
+          <p class="text-gray-600">Date: ${order.date}</p>
+          <p class="text-gray-600">Total Items: ${order.items.length}</p>
+          <p class="text-gray-600">Total Price: $${order.total}</p>
+          <ul class="mt-4 text-sm text-gray-600">
+            ${order.items.map(item => `<li>- ${item.title} ($${item.price.toFixed(2)})</li>`).join('')}
+          </ul>
+        `;
+        ordersElement.appendChild(orderCard);
+      });
+    } else {
+      ordersElement.innerHTML = `<p class="text-gray-600">You have no past orders.</p>`;
+    }
+  });
+</script>
+
 </body>
 </html>

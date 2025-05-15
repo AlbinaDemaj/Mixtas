@@ -1,170 +1,184 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cart - Mixtas</title>
-  <link rel="stylesheet" href="./css/output.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart | Mixtas</title>
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body class="bg-blue-300">
-  <!-- Header with Navbar -->
-  <header class="absolute top-0 left-0 w-full z-20 bg-transparent">
-    <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 lg:p-8">
-      <nav class="flex space-x-8">
-        <a href="index.html" class="hover:text-blue-600 text-gray-900 font-medium">Home</a>
-        <a href="shop.html" class="hover:text-blue-600 text-gray-900 font-medium">Shop</a>
-        <a href="pages.html" class="hover:text-blue-600 text-gray-900 font-medium">Pages</a>
-        <a href="contact.html" class="hover:text-blue-600 text-gray-900 font-medium">Contact Us</a>
-      </nav>
+<body class="bg-blue-300 min-h-screen flex flex-col">
 
-      <!-- Logo -->
-      <a href="#" class="text-white text-xl font-bold absolute left-1/2 transform -translate-x-1/2">Mixtas</a>
+<!-- Header -->
+<header class="absolute top-0 left-0 w-full z-20 bg-transparent">
+  <div class="max-w-screen-xl mx-auto flex items-center justify-between p-4 lg:p-8 relative">
+    
+    <!-- Logo in center -->
+    <a href="index.html" class="text-blue-950 text-xl font-bold absolute left-1/2 transform -translate-x-1/2 z-30">Mixtas</a>
 
-      <div class="flex items-center space-x-6">
-        <a href="profile.html" class="hover:text-blue-600 text-gray-900 font-medium">Profile</a>
-        <a href="cart.html" class="relative hover:text-blue-600 text-gray-900 font-medium">
-          Cart
-          <span id="cart-count" class="absolute -top-2 -right-4 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
-        </a>
-        <button id="logout-button" class="hover:opacity-80">
-          <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6">
-        </button>
-      </div>
+    <!-- Hamburger button for mobile -->
+    <div class="lg:hidden z-30">
+      <button id="menu-toggle" class="text-gray-900 focus:outline-none">
+        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="2"
+          viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+      </button>
     </div>
-  </header>
 
-  <!-- Cart Section -->
-  <section class="max-w-screen-xl mx-auto py-12 px-4 ">
-    <h1 class="text-4xl font-bold text-center mt-20">Your Cart</h1>
-    <div id="cart" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-      <!-- Products in Cart will be dynamically inserted here -->
+    <!-- Navigation + Icons (desktop) -->
+    <nav class="hidden lg:flex items-center space-x-8">
+      <a href="index.html" class="hover:text-blue-600 text-gray-900 font-medium">Home</a>
+      <a href="shop.html" class="hover:text-blue-600 text-gray-900 font-medium">Shop</a>
+      <a href="pages.html" class="hover:text-blue-600 text-gray-900 font-medium">Pages</a>
+      <a href="contact.html" class="hover:text-blue-600 text-gray-900 font-medium">Contact</a>
+    </nav>
+
+    <!-- Icons (desktop) -->
+    <div class="hidden lg:flex items-center space-x-6">
+      <a href="profile.html" class="hover:text-blue-600 text-gray-900 font-medium">Profile</a>
+      <a href="cart.html" class="relative hover:text-blue-600 text-gray-900 font-medium font-bold">
+        Cart
+        <span id="cart-count" class="absolute -top-2 -right-4 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+      </a>
+      <button id="logout-button" class="hover:opacity-80">
+        <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6" />
+      </button>
     </div>
-    <div id="cart-total" class="text-right text-xl font-bold mt-6"></div>
-    <button
-      id="checkout-button"
-      class="hidden mt-6 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700"
-    >
-      Checkout
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobile-menu" class="hidden lg:hidden bg-white shadow-md px-4 py-6 space-y-4 text-center text-gray-900">
+    <a href="index.html" class="block hover:text-blue-600 font-medium">Home</a>
+    <a href="shop.html" class="block hover:text-blue-600 font-medium">Shop</a>
+    <a href="pages.html" class="block hover:text-blue-600 font-medium">Pages</a>
+    <a href="contact.html" class="block hover:text-blue-600 font-medium">Contact</a>
+    <a href="profile.html" class="block hover:text-blue-600 font-medium">Profile</a>
+    <a href="cart.html" class="relative block hover:text-blue-600 font-medium font-bold">
+      Cart
+      <span class="absolute top-0 right-10 bg-red-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+    </a>
+    <button id="logout-button-mobile" class="mx-auto hover:opacity-80">
+      <img src="icon/icons8-logout-48.png" alt="logout" class="w-6 h-6 mx-auto" />
     </button>
-  </section>
+  </div>
+</header>
 
-  <div id="notification-container" class="fixed top-20 right-5 space-y-4"></div>
+<!-- Cart Section -->
+<section class="max-w-screen-xl mx-auto py-20 px-4">
+  <h1 class="text-4xl font-bold text-center mb-10">Your Cart</h1>
+  <div id="cart" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+    <!-- Products will be inserted here -->
+  </div>
+  <div id="cart-total" class="text-right text-xl font-bold mt-6"></div>
+  <button
+    id="checkout-button"
+    class="hidden mt-6 px-6 py-3 bg-green-600 text-white rounded hover:bg-green-700"
+  >
+    Checkout
+  </button>
+</section>
 
-  <script>
-    // DOM Elements
-    const cartSection = document.getElementById('cart');
-    const cartTotalElement = document.getElementById('cart-total');
-    const checkoutButton = document.getElementById('checkout-button');
-    const cartCount = document.getElementById('cart-count');
-    const notificationContainer = document.getElementById('notification-container');
+<!-- Notifications -->
+<div id="notification-container" class="fixed top-20 right-5 space-y-4"></div>
 
-    // Funksioni për shfaqjen e produkteve në shportë
-    function displayCart() {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cartSection.innerHTML = ''; // Pastro përmbajtjen e mëparshme
+<!-- Script -->
+<script>
+  const toggleBtn = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+  toggleBtn.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
 
-        if (cart.length === 0) {
-            cartSection.innerHTML = `<p class="text-gray-600 text-center col-span-3">Your cart is empty!</p>`;
-            cartTotalElement.textContent = '';
-            checkoutButton.classList.add('hidden');
-            cartCount.textContent = 0;
-            return;
-        }
+  const cartSection = document.getElementById('cart');
+  const cartTotalElement = document.getElementById('cart-total');
+  const checkoutButton = document.getElementById('checkout-button');
+  const cartCount = document.getElementById('cart-count');
+  const notificationContainer = document.getElementById('notification-container');
 
-        let total = 0;
-
-        cart.forEach((product, index) => {
-            const { id, title, price = 0, image = "default-image.jpg" } = product;
-
-            total += price;
-
-            const cartItem = document.createElement('div');
-            cartItem.classList.add(
-                'bg-white',
-                'p-4',
-                'rounded-lg',
-                'shadow',
-                'hover:shadow-lg',
-                'transition'
-            );
-
-            cartItem.innerHTML = `
-                <img src="${image}" alt="${title}" class="w-full h-40 object-contain mb-4">
-                <h2 class="text-lg font-bold">${title}</h2>
-                <p class="text-gray-600">$${price.toFixed(2)}</p>
-                <button
-                    class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-                    onclick="removeFromCart(${index}, '${title}')"
-                >
-                    Remove
-                </button>
-            `;
-
-            cartSection.appendChild(cartItem);
-        });
-
-        cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
-        cartCount.textContent = cart.length;
-        checkoutButton.classList.remove('hidden');
+  function displayCart() {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cartSection.innerHTML = '';
+    if (cart.length === 0) {
+      cartSection.innerHTML = `<p class="text-gray-600 text-center col-span-3">Your cart is empty!</p>`;
+      cartTotalElement.textContent = '';
+      checkoutButton.classList.add('hidden');
+      cartCount.textContent = 0;
+      return;
     }
 
-    // Funksioni për të hequr produktin nga shporta
-    function removeFromCart(index, title) {
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-        cart.splice(index, 1); // Heq produktin nga indeksi
-        localStorage.setItem('cart', JSON.stringify(cart)); // Përshtat `localStorage`
-        displayCart(); // Përsëri shfaq shportën
-        showNotification(`${title} has been removed from your cart!`, 'bg-red-500'); // Shfaq njoftimin
-    }
+    let total = 0;
+    cart.forEach((product, index) => {
+      const { title, price = 0, image = "default-image.jpg" } = product;
+      total += price;
 
-    // Funksioni për të shfaqur njoftime
-    function showNotification(message, bgColor) {
-        const notification = document.createElement('div');
-        notification.className = `slide-in visible ${bgColor} text-white px-4 py-2 rounded-lg shadow-lg`;
-        notification.textContent = message;
-        notificationContainer.appendChild(notification);
-
-        setTimeout(() => {
-            notification.classList.remove('visible');
-            setTimeout(() => notification.remove(), 500);
-        }, 3000);
-    }
-
-    // Funksioni për Checkout
-    checkoutButton.addEventListener('click', () => {
-        const cart = JSON.parse(localStorage.getItem('cart')) || [];
-        if (cart.length === 0) {
-            alert('Your cart is empty!');
-            return;
-        }
-
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        const orders = JSON.parse(localStorage.getItem('orders')) || [];
-
-        // Shto porosinë në `orders`
-        orders.push({
-            id: orders.length + 1,
-            items: cart,
-            total: total.toFixed(2),
-            date: new Date().toLocaleString(),
-        });
-
-        // Ruaj porositë dhe pastro shportën
-        localStorage.setItem('orders', JSON.stringify(orders));
-        localStorage.removeItem('cart'); // Zbraz shportën
-
-        // Shfaq njoftim për sukses
-        showNotification('Your order has been placed successfully!', 'bg-green-500');
-
-        // Ridrejto te faqja e profilit pas 2 sekondash
-        setTimeout(() => {
-            window.location.href = 'profile.html';
-        }, 2000); // Pas 2 sekondash
+      const cartItem = document.createElement('div');
+      cartItem.className = 'bg-white p-4 rounded-lg shadow hover:shadow-lg transition';
+      cartItem.innerHTML = `
+        <img src="${image}" alt="${title}" class="w-full h-40 object-contain mb-4">
+        <h2 class="text-lg font-bold">${title}</h2>
+        <p class="text-gray-600">$${price.toFixed(2)}</p>
+        <button
+          class="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+          onclick="removeFromCart(${index}, '${title}')"
+        >
+          Remove
+        </button>
+      `;
+      cartSection.appendChild(cartItem);
     });
 
-    // Initialize Display on Page Load
-    document.addEventListener('DOMContentLoaded', displayCart);
-  </script>
+    cartTotalElement.textContent = `Total: $${total.toFixed(2)}`;
+    cartCount.textContent = cart.length;
+    checkoutButton.classList.remove('hidden');
+  }
+
+  function removeFromCart(index, title) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.splice(index, 1);
+    localStorage.setItem('cart', JSON.stringify(cart));
+    displayCart();
+    showNotification(`${title} has been removed from your cart!`, 'bg-red-500');
+  }
+
+  function showNotification(message, bgColor) {
+    const notification = document.createElement('div');
+    notification.className = `${bgColor} text-white px-4 py-2 rounded-lg shadow-lg`;
+    notification.textContent = message;
+    notificationContainer.appendChild(notification);
+    setTimeout(() => {
+      notification.remove();
+    }, 3000);
+  }
+
+  checkoutButton.addEventListener('click', () => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+      alert('Your cart is empty!');
+      return;
+    }
+
+    const total = cart.reduce((sum, item) => sum + item.price, 0);
+    const orders = JSON.parse(localStorage.getItem('orders')) || [];
+
+    orders.push({
+      id: orders.length + 1,
+      items: cart,
+      total: total.toFixed(2),
+      date: new Date().toLocaleString(),
+    });
+
+    localStorage.setItem('orders', JSON.stringify(orders));
+    localStorage.removeItem('cart');
+
+    showNotification('Your order has been placed successfully!', 'bg-green-500');
+
+    setTimeout(() => {
+      window.location.href = 'profile.html';
+    }, 2000);
+  });
+
+  document.addEventListener('DOMContentLoaded', displayCart);
+</script>
+
 </body>
 </html>

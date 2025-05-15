@@ -130,3 +130,10 @@ if (contactUsLink && contactModal && closeModalButton) {
 } else {
   console.error("Elementët e modal-it për kontakt nuk janë gjetur.");
 }
+
+  const menuToggle = document.getElementById('menu-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  menuToggle.addEventListener('click', () => {
+    mobileMenu.classList.toggle('hidden');
+  });
